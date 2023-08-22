@@ -1,3 +1,5 @@
+use std::net::TcpListener;
+
 pub struct Server {
     addr: String,
 }
@@ -15,6 +17,14 @@ impl Server {
         //takes ownership of the entire struct.
         // `self` will be deallocated when the run() function exits.
         println!("Listening on {}", self.addr);
+
+        let listener = TcpListener::bind(&self.addr).unwrap();
+
+        'outer: loop {
+            // here we are labeling the loop
+            // "loop" is same as "while true" (infinite loop)
+            break;
+        }
     }
 }
 // GET /user?id=1- HTTP/1.1\r\n
